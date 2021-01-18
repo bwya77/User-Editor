@@ -2,7 +2,7 @@
 # Declare Global Variables and Functions here
 #--------------------------------------------
 $Global:About = "Version: 1.0.0
-Build Date: Thursday, October 21st 2020
+Build Date: January 18, 2021
 Author: Bradley Wyatt"
 
 $Global:CountryCodes = @{
