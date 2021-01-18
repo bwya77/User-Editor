@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <Product Name="User Editor" Id="{79027D7A-5CD8-4D09-A2ED-4918DC1A1239}" UpgradeCode="{75BAA7AF-683F-4877-BBC9-7434E20BC8B7}" Version="1.0.0.0" Manufacturer="The Lazy Administrator" Language="1033">
+
+    <Package Id="*" Keywords="Installer" Description="User Editor Installer" 
+		Manufacturer="The Lazy Administrator" InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+	<Media Id="1" Cabinet="product.cab" EmbedCab="yes"/>
+    <Icon Id="ProductIcon" SourceFile="C:\ProgramData\SAPIEN\MSI Icons\Windows_Application_Installer.ico"/>
+	<Property Id="ARPPRODUCTICON" Value="ProductIcon"/>
+	<Property Id="ARPNOREPAIR" Value="1"/>
+
+	<Property Id="ARPNOMODIFY" Value="1"/>
+
+
+	<Upgrade Id="{75BAA7AF-683F-4877-BBC9-7434E20BC8B7}">
+		<UpgradeVersion Minimum="1.0.0.0" OnlyDetect="yes" Property="NEWERVERSIONDETECTED"/>
+		<UpgradeVersion Minimum="0.0.0" Maximum="1.0.0.0" IncludeMinimum="yes" IncludeMaximum="no" 
+					 Property="OLDERVERSIONBEINGUPGRADED"/>	  
+	</Upgrade>
+	<Condition Message="A newer version of this software is already installed.">NOT NEWERVERSIONDETECTED</Condition>
+	<Directory Id="TARGETDIR" Name="SourceDir">
+<Directory Id="ProgramFilesFolder">
+<Directory Id="COMPANY" Name="The Lazy Administrator">
+<Directory Id="INSTALLDIR" Name="User Editor">
+                <Component Id="cmp995EFD8077A7269F9927060A2D88BB0F" Guid="{1CBF6B72-1E99-4C9A-ADC4-AFB94F55AB66}">
+                        <File Id="fil610B640687A6ACFD54C9CCE45781804D" KeyPath="yes" Source="C:\Users\BradleyWyatt\OneDrive - The Lazy Administrator\Documents\SAPIEN\PowerShell Studio\Projects\ADAttributes\MSI_BuildFolder\x64\User Editor.exe" />
+                    </Component>
+                    <Component Id="cmp0BB4459D3993B09AB0CF4D6BC015332F" Guid="{D6F998DE-F0FE-415D-9C54-7B70D58BDE8D}">
+                        <File Id="fil6B4FB03BB6FB209FF8171B589038B17B" KeyPath="no" Source="C:\Users\BradleyWyatt\OneDrive - The Lazy Administrator\Documents\SAPIEN\PowerShell Studio\Projects\ADAttributes\MSI_BuildFolder\x64\User Editor.exe.config" />
+                    </Component>
+                    <Component Id="cmpC0F13373855274D9EA598D5324C8FA9A" Guid="{BA67AC3B-CAA3-497B-9A71-58A94F802496}">
+                        <File Id="fil3F93E14E88F69F7CFE39D6476960290B" KeyPath="no" Source="C:\Users\BradleyWyatt\OneDrive - The Lazy Administrator\Documents\SAPIEN\PowerShell Studio\Projects\ADAttributes\MSI_BuildFolder\x64\User Editor.exe.sha256" />
+                    </Component>
+                </Directory>
+			
+</Directory>
+</Directory>
+</Directory>
+		<Directory Id="ProgramMenuFolder">
+			<Directory Id="ProgramMenuSubfolder" Name="The Lazy Administrator">
+				<Directory Id="ProductSubfolder" Name="User Editor">
+				   <Component Id="ApplicationShortcuts" Guid="{EBCB33F2-4D5C-48E3-9E4F-DB21500CED9D}">
+					  <Shortcut Id="ApplicationShortcut1" Name="User Editor" Description="Shortcut to User Editor" 
+								Target="[INSTALLDIR]x64" WorkingDirectory="INSTALLDIR"/>
+					  <RegistryValue Root="HKCU" Key="Software\The Lazy Administrator\User Editor" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+					  <RemoveFolder Id="RemoveProductfolder" Directory="ProductSubfolder" On="uninstall"/>
+					  <RemoveFolder Id="RemoveMenuSubfolder" Directory="ProgramMenuSubfolder" On="uninstall"/>
+				   </Component>
+				</Directory>
+			</Directory>
+		</Directory>
+
+		<Directory Id="WindowsFolder">
+			<Directory Id="SystemFolder" Name="System32">
+			</Directory>
+		</Directory>
+	</Directory>
+
+	<InstallExecuteSequence>
+	 <RemoveExistingProducts After="InstallValidate"/>
+	
+	</InstallExecuteSequence>
+ 
+	<Feature Id="DefaultFeature" Level="1">
+<ComponentRef Id="cmp995EFD8077A7269F9927060A2D88BB0F"/>
+<ComponentRef Id="cmp0BB4459D3993B09AB0CF4D6BC015332F"/>
+<ComponentRef Id="cmpC0F13373855274D9EA598D5324C8FA9A"/>
+	
+		<ComponentRef Id="ApplicationShortcuts"/>
+
+	</Feature>
+  </Product>
+</Wix>
