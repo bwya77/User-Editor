@@ -3,6 +3,8 @@ End User PowerShell UI Active Directory User Editor
 
 Created in PowerShell Studio 2021
 
+[Blog Post](https://www.thelazyadministrator.com/2021/01/18/easily-enable-end-users-to-manage-active-directory-users-with-powershell-gui/)
+
 # Downloads
 - [Exe](https://github.com/bwya77/User-Editor/raw/main/bin/x64/User%20Editor.exe)
 - [SHA256 Exe](https://github.com/bwya77/User-Editor/blob/main/bin/x64/User%20Editor.exe.sha256)
